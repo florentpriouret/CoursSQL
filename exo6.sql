@@ -17,13 +17,16 @@ colonne "userid".
 La fonction utilisée doit permettre de générer une valeur en prenant les 3 premières lettres du prénom et les 5
 premières lettres du nom de famille de chaque employé.*/
 UPDATE employees_2 
-SET userid = (select concat(left(first_name,3),left(last_name,5)))
+SET userid = (
+  select concat(left(first_name,3),left(last_name,5)))
 /*3) Changer le nom de famille de l'employé "DURANT" en "DUROI"*/
 UPDATE employees_2 SET last_name='DUROI'
 WHERE last_name ='DURANT'
 /*4) Augmenter de 10% le salaire de tous les employés ayant un "o" dans leur prénom*/
-UPDATE employees_2 SET salary =salary*1.1 
+UPDATE employees_2 
+SET salary =salary*1.1 
 WHERE first_name LIKE '%o%'
 /*5) Supprimer tous les employés dont le salaire est inférieur à 2000*/
-DELETE FROM employees_2 
+DELETE 
+FROM employees_2 
 WHERE salary<2000
